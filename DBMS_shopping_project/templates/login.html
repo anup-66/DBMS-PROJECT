@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="static\css\login.css">
+</head>
+<body>
+  <div class="login-page">
+    <div class="login-box">
+      <h2>Login</h2>
+      <form action="login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+      <input type="submit" value="login" name ="login">login</input>
+      </form>
+      <form action ='signup' method='post'>
+        <input type="submit" value="signup" name ="signup">
+        {% if msg %}
+          <p class="error">{{ msg }}</p>
+        {% endif %}
+      </form>
+
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2023 Login Page. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MySQL Query Executor</title>
+	<style>
+		#input-box {
+			width: 90%;
+			height: 50px;
+			font-size: 20px;
+			padding: 10px;
+			margin: 20px;
+			border: 2px solid #ccc;
+			border-radius: 10px;
+			resize: none;
+		}
+
+		#submit-btn {
+			width: 100px;
+			height: 50px;
+			font-size: 20px;
+			margin-left: 20px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+
+		#result {
+			width: 90%;
+			height: 400px;
+			font-size: 16px;
+			padding: 10px;
+			margin: 20px;
+			border: 2px solid #ccc;
+			border-radius: 10px;
+			overflow-y: scroll;
+			background-color: #000;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+<form action = "/admin" method = "post">
+	<textarea id="input-box" name = "text" placeholder="Enter your MySQL query here"></textarea>
+	<button id="submit-btn" >Submit</button>
+	<div id="result">\
+		<table>
+  <thead>
+    <tr>
+        {%if List%}
+		{% for column in List%}
+      <th>{{column}}</th>
+        {% endfor %}
+        {% endif %}
+<!--      <th>Quantity</th>-->
+<!--      <th>Price</th>-->
+    </tr>
+  </thead>
+  <tbody>
+    {% if msg %}
+      {% for item in msg %}
+        <tr>
+			{%for val in item%}
+          <td>{{ val }}</td>
+            {% endfor %}
+<!--          <td>{{ item.quantity }}</td>-->
+<!--          <td>{{ item.price }}</td>-->
+        </tr>
+      {% endfor %}
+    {% else %}
+      <tr>
+        <td colspan="3">No items found.</td>
+      </tr>
+    {% endif %}
+  </tbody>
+</table>
+	</div>
+</form>
+
+<!--	<script>-->
+<!--		function executeQuery() {-->
+<!--			var input = document.getElementById("input-box").value;-->
+<!--			var xhr = new XMLHttpRequest();-->
+<!--			xhr.onreadystatechange = function() {-->
+<!--				if (this.readyState == 4 && this.status == 200) {-->
+<!--					document.getElementById("result").innerHTML = this.responseText;-->
+<!--				}-->
+<!--			};-->
+<!--			xhr.open("POST", "execute.php", true);-->
+<!--			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");-->
+<!--			xhr.send("query=" + input);-->
+<!--		}-->
+<!--	</script>-->
+</body>
+</html>

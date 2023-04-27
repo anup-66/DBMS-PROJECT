@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wishlist</title>
+<!--    <link rel="stylesheet" href="static\css\wishlist.css">-->
+      <style>
+          .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.item-info {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.item h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.add-form {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #3e8e41;
+}
+
+      </style>
+  </head>
+  <body>
+    <h1>Wishlist</h1>
+    {% for item in items %}
+      <div class="item">
+<!--          <h2>{{ item }}</h2>-->
+           <h3>Product :{{ item[1] }}</h3>
+            <p><b>Price: </b>{{ item[2] }}</p>
+            <p><b>Seller: </b>{{ item[3] }}</p>
+        <form class="add-form" action="/cart/add/{{ item[0] }}" method="POST">
+          <button class="add-button" type="submit">Add to Cart</button>
+        </form>
+          <form class="add-form" action="/wishlist/delete/{{ item[4] }}" method="POST">
+          <button class="add-button" type="submit">REMOVE</button>
+        </form>
+      </div>
+    {% endfor %}
+  </body>
+</html>

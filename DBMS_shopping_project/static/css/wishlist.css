@@ -1,0 +1,40 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.item-info {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.item h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.add-form {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #3e8e41;
+}

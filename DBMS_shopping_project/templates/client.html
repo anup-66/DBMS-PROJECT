@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>My Page</title>
+	<link rel="stylesheet" href="static\css\client.css">
+</head>
+<body>
+	<header>
+		<h1>My Page</h1>
+	</header>
+	<div class="container">
+		<div class="buttons">
+<!--			<form action="/wishlist"  method="post">-->
+				<button onclick="location.href='/wishlist'" type="submit" value="wishlist" class="button" >Wishlist</button>
+<!--			</form>-->
+			<form action="/cart" method = 'post'>
+				<button class="button">My Cart</button>
+			</form>
+			<form action="/myinfo" method = 'post'>
+				<button type ='submit' class="button">My Info</button>
+			</form>
+			<form action="/allitem" method = 'post'>
+				<button type = 'submit' value = 'allitem' class="button">All Item</button>
+			</form>
+		</div>
+
+			<form action = "/search" method='post'>
+		<div class="search">
+			<input name = 'search' type="text" placeholder="Search...">
+			<button class = 'button'>Go</button>
+		</div>
+			</form>
+		{% if msg %}
+			{%for item in msg%}
+				<div class="item">
+				   <h3>Product :{{ item[1] }}</h3>
+					<p><b>Price: </b>{{ item[2] }}</p>
+				<form class="add-form" action="/wishlist/add/{{ item[0] }}" method="POST">
+				  <button class="button" type="submit">Add to wishlist</button>
+				</form>
+				<form class="add-form" action="/cart/add/{{ item[0] }}" method="POST">
+					<button class="button" type="submit">Add to cart</button>
+				</form>
+			  </div>
+    		{% endfor %}
+		{% endif %}
+	</div>
+	<footer>
+		<p>&copy; hello bye its the last</p>
+	</footer>
+</body>
+</html>
