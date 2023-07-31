@@ -25,10 +25,10 @@ app.secret_key = 'Anup'
 
 @app.route('/')
 def home():
-    return render_template('login.html')
+    return render_template('index.html')
 
 
-@app.route('/login', methods=['GET','POST'])
+@app.route('/index', methods=['GET','POST'])
 def login():
     if not request.method=='GET':
         global User
@@ -63,12 +63,12 @@ def login():
                 return render_template("client.html",msg="")
                 # return "client1"
             else:
-                return render_template('login.html', msg="Please enter correct password")
+                return render_template('index.html', msg="Please enter correct password")
         else:
-            return render_template('login.html', msg='you are not registered please signup first')
+            return render_template('index.html', msg='you are not registered please signup first')
     else:
-        redirect(url_for('login'))
-    return render_template('login.html',msg='')
+        redirect(url_for('index'))
+    return render_template('index.html',msg='')
 
 @app.route('/admin')
 def Admin():
@@ -98,9 +98,9 @@ def signup_detail():
     Sign = Signup()
     result = Sign.signup(username, password, name, mobile)
     if not result:
-        return render_template('login.html', msg="singed up successfully.")
+        return render_template('index.html', msg="singed up successfully.")
     else:
-        return render_template('login.html', msg="You already have a account.")
+        return render_template('index.html', msg="You already have a account.")
 
 
 @app.route('/client', methods=['GET', 'POST'])
